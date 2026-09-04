@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Stickman Blueprint — Build a Profitable Faceless Animation Channel</title>
+<meta name="description" content="The exact system behind a 5-video stickman channel outperforming a 20-video storytelling channel — the tools, the real costs, and the prompting method, in one guide.">
+<meta name="theme-color" content="#0a1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230a1220'/%3E%3Ccircle cx='50' cy='30' r='14' fill='none' stroke='%23d9b25f' stroke-width='6'/%3E%3Cline x1='50' y1='44' x2='50' y2='70' stroke='%23d9b25f' stroke-width='6'/%3E%3Cline x1='50' y1='52' x2='34' y2='62' stroke='%23d9b25f' stroke-width='6'/%3E%3Cline x1='50' y1='52' x2='66' y2='62' stroke='%23d9b25f' stroke-width='6'/%3E%3Cline x1='50' y1='70' x2='36' y2='90' stroke='%23d9b25f' stroke-width='6'/%3E%3Cline x1='50' y1='70' x2='64' y2='90' stroke='%23d9b25f' stroke-width='6'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Stickman Blueprint — Build a Profitable Faceless Animation Channel">
+<meta property="og:description" content="The exact system behind a 5-video stickman channel outperforming a 20-video storytelling channel — the tools, the real costs, and the prompting method, in one guide.">
+<meta property="og:site_name" content="WinDigital">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Stickman Blueprint — Build a Profitable Faceless Animation Channel">
+<meta name="twitter:description" content="The exact system behind a 5-video stickman channel outperforming a 20-video storytelling channel — the tools, the real costs, and the prompting method, in one guide.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "The Stickman Blueprint",
+  "description": "The exact system behind a 5-video stickman channel outperforming a 20-video storytelling channel — the tools, the real costs, and the prompting method, in one guide.",
+  "brand": { "@type": "Brand", "name": "WinDigital" },
+  "offers": {
+    "@type": "Offer",
+    "price": "3",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://selar.com/55p87p7445"
+  }
+}
+</script>
+
+<noscript>
+<style>.countdown { display: none !important; }</style>
+</noscript>
 <style>
   :root {
     --navy-deep: #0a1220;
@@ -383,7 +416,7 @@
 
     <div class="countdown">
       <span class="countdown-label">Launch price ends in</span>
-      <div class="countdown-timer">
+      <div class="countdown-timer" aria-hidden="true">
         <div class="c-box"><span class="cd-h">00</span><small>hrs</small></div>
         <span class="c-sep">:</span>
         <div class="c-box"><span class="cd-m">00</span><small>min</small></div>
@@ -393,7 +426,7 @@
     </div>
 
     <div class="cta-row">
-      <a class="button button--gold" href="https://selar.com/55p87p7445">Get The Blueprint — Instant Download</a>
+      <a class="button button--gold" href="https://selar.com/55p87p7445" target="_blank" rel="noopener noreferrer">Get The Blueprint — Instant Download</a>
       <span class="price-tag"><span class="now">$3</span><span class="was">$11.06</span></span>
     </div>
 
@@ -515,7 +548,7 @@
 
     <div class="countdown">
       <span class="countdown-label">Launch price ends in</span>
-      <div class="countdown-timer">
+      <div class="countdown-timer" aria-hidden="true">
         <div class="c-box"><span class="cd-h">00</span><small>hrs</small></div>
         <span class="c-sep">:</span>
         <div class="c-box"><span class="cd-m">00</span><small>min</small></div>
@@ -525,7 +558,7 @@
     </div>
 
     <div class="cta-row">
-      <a class="button button--gold" href="https://selar.com/55p87p7445">Get The Stickman Blueprint — $3</a>
+      <a class="button button--gold" href="https://selar.com/55p87p7445" target="_blank" rel="noopener noreferrer">Get The Stickman Blueprint — $3</a>
     </div>
     <p class="fineprint">Instant download · Delivered as a PDF · Read today, start this week</p>
   </div>
@@ -539,13 +572,31 @@
 (function () {
   var STORAGE_KEY = 'stickman_offer_deadline';
   var DURATION_MS = 24 * 60 * 60 * 1000; // 24-hour offer window per visitor
+  var memoryDeadline = null; // fallback when localStorage is unavailable (private mode, blocked storage, sandboxed iframes)
+
+  function readStored() {
+    try {
+      return parseInt(localStorage.getItem(STORAGE_KEY), 10);
+    } catch (e) {
+      return memoryDeadline;
+    }
+  }
+
+  function writeStored(value) {
+    memoryDeadline = value;
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch (e) {
+      // storage unavailable — memory fallback still keeps the timer consistent for this page view
+    }
+  }
 
   function getDeadline() {
-    var stored = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+    var stored = readStored();
     var now = Date.now();
     if (!stored || stored < now) {
       stored = now + DURATION_MS;
-      localStorage.setItem(STORAGE_KEY, stored);
+      writeStored(stored);
     }
     return stored;
   }
@@ -561,7 +612,7 @@
     var diff = deadline - Date.now();
     if (diff <= 0) {
       deadline = Date.now() + DURATION_MS;
-      localStorage.setItem(STORAGE_KEY, deadline);
+      writeStored(deadline);
       diff = DURATION_MS;
     }
     var h = Math.floor(diff / 3600000);
