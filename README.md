@@ -1,10 +1,10 @@
 # Stickman
 
-Single-page sales/landing site for **The Stickman Blueprint** — a guide on building a faceless, AI-animated stickman YouTube channel.
+Single-page sales/landing site for **The Stickman Blueprint**, a guide on building a faceless, AI-animated stickman YouTube channel.
 
 ## Contents
 
-- [`index.html`](index.html) — the entire site (markup, styles, and a small vanilla-JS countdown timer), self-contained with no build step or dependencies.
+- [`index.html`](index.html): the entire site (markup, styles, and a small vanilla-JS countdown timer), self-contained with no build step or dependencies.
 
 ## Running locally
 
@@ -16,7 +16,7 @@ npx serve .
 
 ## Deploying
 
-This is a static file, so it can be hosted as-is on GitHub Pages, Netlify, Vercel, or any static host — point it at `index.html`.
+This is a static file, so it can be hosted as-is on GitHub Pages, Netlify, Vercel, or any static host: point it at `index.html`.
 
 ## Notes
 
